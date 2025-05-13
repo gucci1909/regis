@@ -9,6 +9,7 @@ import { hideBin } from 'yargs/helpers';
 import swaggerUi from 'swagger-ui-express';
 import otpRouter from "./api/otp/otp.js";
 import logger from './utils/logger.js';
+import projectRegisterRouter from "./api/project/project.js";
 import companyRegisterFromTypes from './api/register/index.js';
 import { connectToDb } from './config/mongodb.js';
 
@@ -84,6 +85,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api', healthRoutes);
 
 app.use('/api/register', companyRegisterFromTypes);
+app.use('/api/projects', projectRegisterRouter)
 
 app.use('/api/otp' , otpRouter)
 
